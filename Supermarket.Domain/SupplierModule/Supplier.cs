@@ -1,4 +1,5 @@
-﻿using Supermarket.Domain.Shared;
+﻿using Supermarket.Domain.AdressModule;
+using Supermarket.Domain.Shared;
 
 namespace Supermarket.Domain.SupplierModule;
 public class Supplier : BaseEntity<Supplier>

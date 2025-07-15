@@ -1,6 +1,6 @@
 ﻿using Supermarket.Domain.Shared;
 
-namespace Supermarket.Domain.SupplierModule;
+namespace Supermarket.Domain.AdressModule;
 public class Adress : BaseEntity<Adress>
 {
     public string PostalCode { get; set; }
