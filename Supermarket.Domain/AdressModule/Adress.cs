@@ -8,7 +8,9 @@ public class Adress : BaseEntity<Adress>
     public string Neighborhood { get; set; }
     public string Street { get; set; }
 
-    public Adress(string postalCode, string city, string neighborhood, string street)
+    public Adress() { }
+
+    public Adress(string postalCode, string city, string neighborhood, string street) : this()
     {
         PostalCode = postalCode;
         City = city;

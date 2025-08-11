@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Win32;
 using Supermarket.Domain.Shared;
 
 namespace Supermarket.Infraestructure.Orm.Shared;
@@ -17,19 +18,33 @@ public class BaseOrmRepository<T> where T : BaseEntity<T>
         records.Add(record);
     }
 
-    public void UpdateRecord(Guid id, T record)
+    public bool UpdateRecord(Guid id, T UpdatedRecord)
     {
-        throw new NotImplementedException();
+        var selectedRecord = GetRecordById(id);
+
+        if (selectedRecord is null)
+            return false;
+
+        selectedRecord.UpdateRecord(UpdatedRecord);
+
+        return true;
     }
 
-    public void DeleteRecord(Guid id)
+    public bool DeleteRecord(Guid id)
     {
-        throw new NotImplementedException();
+        var selectedRecord = GetRecordById(id);
+
+        if (selectedRecord is null)
+            return false;
+
+        records.Remove(selectedRecord);
+
+        return true;
     }
 
     public virtual T? GetRecordById(Guid id)
     {
-        return records.FirstOrDefault(x => x.Id == id);
+        return records.FirstOrDefault(x => x.Id.Equals(id));
     }
 
     public virtual List<T> GetAll()
