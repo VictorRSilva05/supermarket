@@ -8,7 +8,7 @@ public class SupplierConfiguration : IEntityTypeConfiguration<Supplier>
     public void Configure(EntityTypeBuilder<Supplier> builder)
     {
         builder.Property(d => d.Id)
-            .ValueGeneratedOnAdd()
+            .ValueGeneratedNever()  
             .IsRequired();
 
         builder.Property(d => d.Name)
