@@ -15,7 +15,8 @@ public class BatchConfiguration : IEntityTypeConfiguration<Batch>
             .IsRequired()
             .HasMaxLength(50);
 
-        builder.Property(d => d.Product)
+        builder.HasOne(d => d.Product)
+            .WithMany()
             .IsRequired();
 
         builder.Property(d => d.Quantity)
@@ -29,7 +30,8 @@ public class BatchConfiguration : IEntityTypeConfiguration<Batch>
             .IsRequired()
             .HasColumnType("datetime");
 
-        builder.Property(d => d.Supplier)
+        builder.HasOne(d => d.Supplier)
+            .WithMany()
             .IsRequired();
 
         builder.Property(d => d.UnitPrice)
